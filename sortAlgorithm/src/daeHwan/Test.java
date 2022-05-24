@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class Test {
     public static void main(String[] args) {
-        String[] arr = RandomArrayCreator.strArr(100);
+        Integer[] arr = RandomArrayCreator.intArr(100);
         HeapSort.sort(arr);
 
         System.out.print(Arrays.toString(arr));
