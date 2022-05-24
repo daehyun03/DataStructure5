@@ -32,10 +32,10 @@ public class InsertionSort {
         while (low < high) {
             mid = (low + high) / 2;
 
-            if (arr[mid].compareTo(key) > 0) {
-                high = mid;
-            } else {
+            if (isLess(arr[mid], key)) {
                 low = mid + 1;
+            } else {
+                high = mid;
             }
         }
         return high;
