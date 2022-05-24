@@ -1,4 +1,4 @@
-package minJune;
+package minJun;
 
 public class Test {
     // test
