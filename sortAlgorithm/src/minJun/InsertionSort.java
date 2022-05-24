@@ -18,7 +18,7 @@ public class InsertionSort {
     public static void sortBinary(Comparable[] arr) {
         int targetIdx;
         for (int i = 1; i < arr.length; i++) {
-            targetIdx = binarySearch(arr, arr[i], i-1);
+            targetIdx = binarySearch(arr, arr[i], i);
             for(int j = i; targetIdx < j; j--) {
                 swap(arr, j, j - 1);
             }
@@ -29,20 +29,16 @@ public class InsertionSort {
         int mid = 0;
         int low = 0;
 
-        while (low <= high) {
+        while (low < high) {
             mid = (low + high) / 2;
 
             if (arr[mid].compareTo(key) > 0) {
-                high = mid - 1;
+                high = mid;
             } else {
                 low = mid + 1;
             }
         }
-        if(low > high) {
-            return low;
-        } else {
-            return mid;
-        }
+        return high;
     }
 
     public static boolean isLess(Comparable a, Comparable b) {

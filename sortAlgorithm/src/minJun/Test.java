@@ -18,5 +18,11 @@ public class Test {
 
         System.out.print(Arrays.toString(arr2) + "\n");
 
+        Integer[] arr3 = RandomArrayCreator.intArr(20);
+
+        InsertionSort.sortBinary(arr3);
+
+        System.out.print(Arrays.toString(arr3) + "\n");
+
     }
 }
