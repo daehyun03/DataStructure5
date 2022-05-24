@@ -16,31 +16,28 @@ public class InsertionSort {
     }
 
     public static void sortBinary(Comparable[] arr) {
-        int size = 1;
         int targetIdx;
-
         for (int i = 1; i < arr.length; i++) {
-            targetIdx = binarySearch(arr, arr[i], size++);
+            targetIdx = binarySearch(arr, arr[i], i);
             for(int j = i; targetIdx < j; j--) {
-                swap(arr, j - 1, j);
+                swap(arr, j, j - 1);
             }
         }
     }
 
     public static int binarySearch(Comparable[] arr, Comparable key, int high) {
-        int low = 0;
         int mid = 0;
+        int low = 0;
 
-        while(low < high) {
+        while (low < high) {
             mid = (low + high) / 2;
 
-            if (key.compareTo(arr[mid]) < 0) {
-                high = mid;
-            } else {
+            if (isLess(arr[mid], key)) {
                 low = mid + 1;
+            } else {
+                high = mid;
             }
         }
-
         return high;
     }
 
