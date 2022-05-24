@@ -1,5 +1,14 @@
 package daeHwan;
 
+import main.RandomArrayCreator;
+
+import java.util.Arrays;
+
 public class Test {
-    // test pull
+    public static void main(String[] args) {
+        Integer[] arr = RandomArrayCreator.IntArr(100);
+        HeapSort.sort(arr);
+
+        System.out.print(Arrays.toString(arr));
+    }
 }
