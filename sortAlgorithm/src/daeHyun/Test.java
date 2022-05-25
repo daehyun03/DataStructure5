@@ -23,9 +23,18 @@ public class Test {
         }*/
 
         //정렬확인
-        Integer[] arr = RandomArrayCreator.intArr(100);
-        BottomUpMergeSort.sort(arr);
-        System.out.print(Arrays.toString(arr) + "\n");
+        Integer[] arr = RandomArrayCreator.intArr(1000);
+        NaturalMergeSort.sort(arr);
+        System.out.print(isSorted(arr));
+    }
+
+    public static boolean isSorted(Comparable[] arr) {
+        for ( int i = 1; i < arr.length; i++ ) {
+            if ( arr[i - 1].compareTo(arr[i]) > 0 ) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
