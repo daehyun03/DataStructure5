@@ -1,9 +1,11 @@
 package main;
 
 public class Student implements Comparable<Student>{
+    private String name;
     private double score[];
 
-    public Student(double... score) {
+    public Student(String name, double... score) {
+        this.name = name;
         this.score = score;
     }
 
@@ -31,5 +33,10 @@ public class Student implements Comparable<Student>{
         else {
             return -1;
         }
+    }
+
+    @Override
+    public String toString() {
+        return String.format("name : \s avg: \f", name, getAvg());
     }
 }
