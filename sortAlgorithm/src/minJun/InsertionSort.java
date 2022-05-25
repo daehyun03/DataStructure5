@@ -7,7 +7,7 @@ public class InsertionSort {
         int arrayLength = a.length;
         for (int i = 1; i < arrayLength; i++) {
             for (int j = i; j > 0; j--) {
-                if (isLess( a[j], a[j-1]) ) {
+                if ( isLess( a[j], a[j-1]) ) {
                     swap(a, j, j-1);
                 }
                 else break;
@@ -20,7 +20,9 @@ public class InsertionSort {
         for (int i = 1; i < arr.length; i++) {
             targetIdx = binarySearch(arr, arr[i], i);
             for(int j = i; targetIdx < j; j--) {
-                swap(arr, j, j - 1);
+                if ( isLess( arr[j], arr[j-1]) ) {
+                    swap(arr, j, j-1);
+                }
             }
         }
     }
