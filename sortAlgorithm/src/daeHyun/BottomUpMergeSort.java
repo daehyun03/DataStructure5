@@ -1,6 +1,7 @@
 package daeHyun;
 
 public class BottomUpMergeSort {
+
     public static void sort(Comparable[] arr) {
         Comparable[] tempArr = new Comparable[arr.length];
         int high = arr.length - 1;
