@@ -6,7 +6,7 @@ public class RecursiveMergeSort {
         mergeSort(arr, tempArr, 0, arr.length - 1);
     }
 
-    private static void merge(Comparable[] arr, Comparable[] tempArr, int low, int mid, int high) {
+    protected static void merge(Comparable[] arr, Comparable[] tempArr, int low, int mid, int high) {
         int idx1 = low;
         int idx2 = mid + 1;
 
