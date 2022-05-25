@@ -10,23 +10,19 @@ public class RecursiveMergeSort {
         int idx1 = low;
         int idx2 = mid + 1;
 
-        for (int i = low; i <= high; i++) {
-            if (idx1 > mid) {
-                for (int j = idx2; j <= high; j++) {
-                    tempArr[i++] = arr[j];
-                }
-            }
-            else if (idx2 > high) {
-                for (int j = idx1; j <= mid; j++) {
-                    tempArr[i++] = arr[j];
-                }
-            }
-            else if (isLess(arr[idx2], arr[idx1])) {
-                tempArr[i] = arr[idx2++];
-            }
-            else {
-                tempArr[i] = arr[idx1++];
-            }
+        int tempIdx = low;
+        while (idx1 <= mid && idx2 <= high) {
+            if (arr[idx1].compareTo(arr[idx2]) <= 0)
+                tempArr[tempIdx++] = arr[idx1++];
+            else
+                tempArr[tempIdx++] = arr[idx2++];
+        }
+
+        while (idx1 <= mid) {
+            tempArr[tempIdx++] = arr[idx1++];
+        }
+        while (idx2 <= high) {
+            tempArr[tempIdx++] = arr[idx2++];
         }
 
         for (int i = low; i <= high; i++) {
@@ -43,9 +39,5 @@ public class RecursiveMergeSort {
         mergeSort(arr, tempArr, low, mid);
         mergeSort(arr, tempArr, mid + 1, high);
         merge(arr, tempArr, low, mid, high);
-    }
-
-    private static boolean isLess(Comparable e1, Comparable e2) {
-        return e1.compareTo(e2) < 0;
     }
 }
