@@ -42,30 +42,22 @@ public class MedianOfThreeQuickSort {
         if(a[low].compareTo(a[mid]) >= 0) {
             if(a[mid].compareTo(a[high]) >= 0) {
                 swap(a, low, mid);
-                //return mid;
             }
             else if(a[low].compareTo(a[high]) <= 0) {
-                //return low;
+
             }
             else {
                 swap(a, low, mid);
-               // return mid;
             }
         }
         else if(a[high].compareTo(a[low]) < 0) {
-           // return low;
+
         }
         else if(a[mid].compareTo(a[high]) > 0) {
             swap(a, low, high);
-          //  return high;
         }
         else {
             swap(a, low, mid);
-          //  return mid;
         }
-    }
-
-    public static void sortThree(Comparable[] a, int low, int mid, int high) {
-
     }
 }
