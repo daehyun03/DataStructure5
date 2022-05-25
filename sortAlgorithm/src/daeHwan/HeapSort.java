@@ -14,8 +14,8 @@ public class HeapSort {
     }
 
     private static void downHeap(Comparable[] arr, int target, int size) {
-        while (left(target) <= size) {
-            int bigChild = left(target);
+        while (target * 2 + 1 <= size) {
+            int bigChild = target * 2 + 1;
 
             if (bigChild < size && isLess(arr[bigChild], arr[bigChild + 1])) {
                 bigChild++;
@@ -27,10 +27,6 @@ public class HeapSort {
             swap(arr, target, bigChild);
             target = bigChild;
         }
-    }
-
-    private static int left(int idx) {
-        return (idx + 1) * 2 - 1;
     }
 
     private static boolean isLess(Comparable e1, Comparable e2) {
