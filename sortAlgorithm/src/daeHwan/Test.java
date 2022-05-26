@@ -6,9 +6,9 @@ import main.RandomArrayCreator;
 
 public class Test {
     public static void main(String[] args) {
-        int size = 100000;
+        int size = 1000000;
 
-        int time = 30;
+        int time = 50;
 
         long sumNMS = 0;
         long sumBUMS = 0;
@@ -34,7 +34,7 @@ public class Test {
 
             System.out.printf("%d \t: %d \t: %d \n", nms, bums, ms);
         }
-        System.out.println("평균시간");
+        System.out.println("????");
         System.out.printf("%f \t: %f \t: %f \n", (double)sumNMS / time, (double)sumBUMS / time, (double)sumMS / time);
     }
 
