@@ -1,12 +1,6 @@
 package daeHyun;
 
-import daeHwan.HeapSort;
-import daeHwan.RecursiveMergeSort;
 import main.RandomArrayCreator;
-import minJun.InsertionSort;
-
-import java.math.BigDecimal;
-import java.util.Arrays;
 
 public class Test {
     public static void main(String[] args) {
@@ -23,9 +17,6 @@ public class Test {
         }*/
 
         //정렬확인
-        Integer[] arr = RandomArrayCreator.intArr(1000);
-        NaturalMergeSort.sort(arr);
-        System.out.print(isSorted(arr));
     }
 
     public static boolean isSorted(Comparable[] arr) {
@@ -36,5 +27,4 @@ public class Test {
         }
         return true;
     }
-
 }
