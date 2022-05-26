@@ -3,7 +3,7 @@ package daeHwan;
 public class NaturalMergeSort {
     public static void sort(Comparable[] arr) {
         Comparable[] tempArr = new Comparable[arr.length];
-        Queue<Integer> queue = new Queue<Integer>();
+        Queue<Integer> queue = new Queue<Integer>(arr.length);
         int size = 1;
         int idx = 0;
 
