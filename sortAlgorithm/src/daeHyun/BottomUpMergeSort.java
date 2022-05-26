@@ -1,12 +1,17 @@
-package daeHwan;
+package daeHyun;
 
-public class RecursiveMergeSort {
+public class BottomUpMergeSort {
     public static void sort(Comparable[] arr) {
         Comparable[] tempArr = new Comparable[arr.length];
-        mergeSort(arr, tempArr, 0, arr.length - 1);
+        int high = arr.length - 1;
+        for ( int size = 1; size < arr.length; size = size*2 ) {
+            for ( int low = 0; low < high; low = low + size*2 ) {
+                merge(arr, tempArr, low, Math.min(low+size-1,high), Math.min(low+size*2-1,high));
+            }
+        }
     }
 
-    protected static void merge(Comparable[] arr, Comparable[] tempArr, int low, int mid, int high) {
+    private static void merge(Comparable[] arr, Comparable[] tempArr, int low, int mid, int high) {
         int idx1 = low;
         int idx2 = mid + 1;
 
@@ -28,16 +33,5 @@ public class RecursiveMergeSort {
         for (int i = low; i <= high; i++) {
             arr[i] = tempArr[i];
         }
-    }
-
-    private static void mergeSort(Comparable[] arr, Comparable[] tempArr, int low, int high) {
-        if (low >= high) {
-            return;
-        }
-
-        int mid = (low + high) / 2;
-        mergeSort(arr, tempArr, low, mid);
-        mergeSort(arr, tempArr, mid + 1, high);
-        merge(arr, tempArr, low, mid, high);
     }
 }

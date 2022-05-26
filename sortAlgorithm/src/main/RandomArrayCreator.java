@@ -10,6 +10,15 @@ public class RandomArrayCreator {
         return arr;
     }
 
+    public static Student[] studArr(int size) {
+        Student[] arr = new Student[size];
+        for(int i = 0; i < size; i++) {
+            arr[i] = new Student(convert26((int)(Math.random() * size)), 10,10,10,10,10); // 수정 중
+        }
+
+        return arr;
+    }
+
     public static String[] strArr(int size) {
         String[] arr = new String[size];
         for(int i = 0; i < size; i++) {
