@@ -1,7 +1,7 @@
 package daeHwan;
 
 public class NaturalMergeSort {
-    private static void merge(Comparable[] arr, Comparable[] target, int low, int mid, int high) {
+    private static void merge(Comparable[] arr, Comparable[] tempArr, int low, int mid, int high) {
         int leftPos = low;
         int rightPos = mid;
         int targetPos = low;
@@ -11,27 +11,27 @@ public class NaturalMergeSort {
             Comparable rightValue = arr[rightPos];
 
             if (leftValue.compareTo(rightValue) < 0) {
-                target[targetPos++] = leftValue;
+                tempArr[targetPos++] = leftValue;
                 leftPos++;
             }
             else {
-                target[targetPos++] = rightValue;
+                tempArr[targetPos++] = rightValue;
                 rightPos++;
             }
         }
 
         while (leftPos < mid) {
-            target[targetPos++] = arr[leftPos++];
+            tempArr[targetPos++] = arr[leftPos++];
         }
         while (rightPos < high) {
-            target[targetPos++] = arr[rightPos++];
+            tempArr[targetPos++] = arr[rightPos++];
         }
     }
 
     public static void sort(Comparable[] arr) {
         int arrSize = arr.length;
 
-        Comparable[] tmp = new Comparable[arrSize];
+        Comparable[] tempArr = new Comparable[arrSize];
         int[] starts = new int[arrSize + 1];
 
         int runCount = 0;
@@ -43,7 +43,7 @@ public class NaturalMergeSort {
         }
 
         Comparable[] from = arr;
-        Comparable[] to = tmp;
+        Comparable[] to = tempArr;
 
         while (runCount > 1) {
             int newRunCount = 0;
