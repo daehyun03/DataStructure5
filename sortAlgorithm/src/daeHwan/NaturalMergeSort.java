@@ -1,49 +1,42 @@
 package daeHwan;
 
 public class NaturalMergeSort {
-    private static void merge(Comparable[] arr, Comparable[] target, int startLeft, int startRight, int endRight) {
-        int leftPos = startLeft;
-        int rightPos = startRight;
-        int targetPos = startLeft;
+    private static void merge(Comparable[] arr, Comparable[] tempArr, int low, int mid, int high) {
+        int idx1 = low;
+        int idx2 = mid;
+        int tempIdx = low;
 
-        while (leftPos < startRight && rightPos < endRight) {
-            Comparable leftValue = arr[leftPos];
-            Comparable rightValue = arr[rightPos];
-
-            if (leftValue.compareTo(rightValue) < 0) {
-                target[targetPos++] = leftValue;
-                leftPos++;
+        while (idx1 < mid && idx2 < high) {
+            if (arr[idx1].compareTo(arr[idx2]) < 0) {
+                tempArr[tempIdx++] = arr[idx1++];
             }
             else {
-                target[targetPos++] = rightValue;
-                rightPos++;
+                tempArr[tempIdx++] = arr[idx2++];
             }
         }
 
-        while (leftPos < startRight) {
-            target[targetPos++] = arr[leftPos++];
+        while (idx1 < mid) {
+            tempArr[tempIdx++] = arr[idx1++];
         }
-        while (rightPos < endRight) {
-            target[targetPos++] = arr[rightPos++];
+        while (idx2 < high) {
+            tempArr[tempIdx++] = arr[idx2++];
         }
     }
 
     public static void sort(Comparable[] arr) {
-        int numElements = arr.length;
+        int arrSize = arr.length;
 
-        Comparable[] tmp = new Comparable[numElements];
-        int[] starts = new int[numElements + 1];
+        Comparable[] from = arr;
+        Comparable[] to = new Comparable[arrSize];
+        int[] starts = new int[arrSize + 1];
 
         int runCount = 0;
         starts[0] = 0;
-        for (int i = 1; i <= numElements; i++) {
-            if (i == numElements || arr[i].compareTo(arr[i - 1]) < 0) {
+        for (int i = 1; i <= arrSize; i++) {
+            if (i == arrSize || arr[i - 1].compareTo(arr[i]) > 0) {
                 starts[++runCount] = i;
             }
         }
-
-        Comparable[] from = arr;
-        Comparable[] to = tmp;
 
         while (runCount > 1) {
             int newRunCount = 0;
@@ -53,22 +46,22 @@ public class NaturalMergeSort {
                 starts[newRunCount++] = starts[i];
             }
 
-            if (runCount % 2 == 1) {
+            if ((runCount & 1) == 1) {
                 int lastStart = starts[runCount - 1];
-                System.arraycopy(from, lastStart, to, lastStart, numElements - lastStart);
+                System.arraycopy(from, lastStart, to, lastStart, arrSize - lastStart);
                 starts[newRunCount++] = lastStart;
             }
 
-            starts[newRunCount] = numElements;
+            starts[newRunCount] = arrSize;
             runCount = newRunCount;
 
-            Comparable[] help = from;
+            Comparable[] temp = from;
             from = to;
-            to = help;
+            to = temp;
         }
 
         if (from != arr) {
-            System.arraycopy(from, 0, arr, 0, numElements);
+            System.arraycopy(from, 0, arr, 0, arrSize);
         }
     }
 }
