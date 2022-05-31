@@ -2,9 +2,9 @@ package main;
 
 public class Student implements Comparable<Student>{
     private String name;
-    private double score[];
+    private int[] score;
 
-    public Student(String name, double... score) {
+    public Student(String name, int[] score) {
         this.name = name;
         this.score = score;
     }
