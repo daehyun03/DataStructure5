@@ -1,30 +1,91 @@
 package daeHyun;
 
+import daeHwan.HeapSort;
+import daeHwan.NaturalMergeSort;
+import daeHwan.RecursiveMergeSort;
+import jongHyeon.LSDSort;
 import main.RandomArrayCreator;
+import minJun.InsertionSort;
+
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class Test {
     public static void main(String[] args) {
-        // 시간비교
-       /* for ( int i = 1; i < 1000001; i = i*10) {
-       // for ( int i = 100000; i > 0; i = i/10) {
+        System.out.println("Integer Type");
+        System.out.println("arr len         R             up            down\tMerge");
+        for ( int i = 1000000; i > 0; i = i/10) {
             Integer[] arr = RandomArrayCreator.intArr(i);
+
             long beforeTime = System.nanoTime();
-            BubbleSort.sort(arr);
+            RecursiveMergeSort.sort(arr);
             long afterTime = System.nanoTime();
+
+            long beforeTime2 = System.nanoTime();
+            RecursiveMergeSort.sort(arr);
+            long afterTime2 = System.nanoTime();
+
+            Arrays.sort(arr, Comparator.reverseOrder());
+
+            long beforeTime3 = System.nanoTime();
+            RecursiveMergeSort.sort(arr);
+            long afterTime3 = System.nanoTime();
+
+
             double time = (double)(afterTime - beforeTime)/1000000;
-            BigDecimal time2 = new BigDecimal(time);
-            System.out.println(i + " time : " + time2);
-        }*/
-
-        //정렬확인
-    }
-
-    public static boolean isSorted(Comparable[] arr) {
-        for ( int i = 1; i < arr.length; i++ ) {
-            if ( arr[i - 1].compareTo(arr[i]) > 0 ) {
-                return false;
-            }
+            double time2 = (double)(afterTime2 - beforeTime2)/1000000;
+            double time3 = (double)(afterTime3 - beforeTime3)/1000000;
+            System.out.printf("%-8d time : %f\t%f\t%f\n", i, time, time2, time3);
         }
-        return true;
+
+        System.out.println("arr len         R             up            down\tBottomUpMerge");
+        for ( int i = 1000000; i > 0; i = i/10) {
+            Integer[] arr = RandomArrayCreator.intArr(i);
+
+            long beforeTime = System.nanoTime();
+            BottomUpMergeSort.sort(arr);
+            long afterTime = System.nanoTime();
+
+            long beforeTime2 = System.nanoTime();
+            BottomUpMergeSort.sort(arr);
+            long afterTime2 = System.nanoTime();
+
+            Arrays.sort(arr, Comparator.reverseOrder());
+
+            long beforeTime3 = System.nanoTime();
+            BottomUpMergeSort.sort(arr);
+            long afterTime3 = System.nanoTime();
+
+
+            double time = (double)(afterTime - beforeTime)/1000000;
+            double time2 = (double)(afterTime2 - beforeTime2)/1000000;
+            double time3 = (double)(afterTime3 - beforeTime3)/1000000;
+            System.out.printf("%-8d time : %f\t%f\t%f\n", i, time, time2, time3);
+        }
+
+        System.out.println("arr len         R             up            down\tNaturalMerge");
+        for ( int i = 1000000; i > 0; i = i/10) {
+            Integer[] arr = RandomArrayCreator.intArr(i);
+
+            long beforeTime = System.nanoTime();
+            NaturalMergeSort.sort(arr);
+            long afterTime = System.nanoTime();
+
+            long beforeTime2 = System.nanoTime();
+            NaturalMergeSort.sort(arr);
+            long afterTime2 = System.nanoTime();
+
+            Arrays.sort(arr, Comparator.reverseOrder());
+
+            long beforeTime3 = System.nanoTime();
+            NaturalMergeSort.sort(arr);
+            long afterTime3 = System.nanoTime();
+
+
+            double time = (double)(afterTime - beforeTime)/1000000;
+            double time2 = (double)(afterTime2 - beforeTime2)/1000000;
+            double time3 = (double)(afterTime3 - beforeTime3)/1000000;
+            System.out.printf("%-8d time : %f\t%f\t%f\n", i, time, time2, time3);
+        }
     }
 }
