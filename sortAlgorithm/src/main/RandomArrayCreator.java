@@ -10,10 +10,29 @@ public class RandomArrayCreator {
         return arr;
     }
 
+    public static Double[] doubleArr(int size) {
+        Double[] arr = new Double[size];
+        for(int i = 0; i < size; i++) {
+            arr[i] = (Math.random() * size);
+        }
+
+        return arr;
+    }
+
     public static Student[] studArr(int size) {
         Student[] arr = new Student[size];
         for(int i = 0; i < size; i++) {
-            arr[i] = new Student(convert26((int)(Math.random() * size)), 10,10,10,10,10); // 수정 중
+            arr[i] = new Student(convert26((int)(Math.random() * size)), scoreArr()); // 수정 중
+        }
+
+        return arr;
+    }
+
+    public static int[] scoreArr() {
+        final int SIZE = 5;
+        int[] arr = new int[SIZE];
+        for(int i = 0; i < SIZE; i++) {
+            arr[i] = (int)(Math.random() * 100);
         }
 
         return arr;
