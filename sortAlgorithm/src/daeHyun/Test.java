@@ -1,11 +1,9 @@
 package daeHyun;
 
-import daeHwan.HeapSort;
-import daeHwan.NaturalMergeSort;
-import daeHwan.RecursiveMergeSort;
-import jongHyeon.LSDSort;
+import sort.NaturalMergeSort;
+import sort.RecursiveMergeSort;
 import main.RandomArrayCreator;
-import minJun.InsertionSort;
+import sort.BottomUpMergeSort;
 
 import java.util.Arrays;
 import java.util.Comparator;

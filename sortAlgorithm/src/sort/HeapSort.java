@@ -1,4 +1,4 @@
-package daeHwan;
+package sort;
 
 public class HeapSort {
     public static void sort(Comparable[] arr) {
