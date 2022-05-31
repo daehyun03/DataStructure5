@@ -1,6 +1,8 @@
 package daeHwan;
 
 import main.RandomArrayCreator;
+import sort.NaturalMergeSort;
+import sort.RecursiveMergeSort;
 
 import java.util.Arrays;
 

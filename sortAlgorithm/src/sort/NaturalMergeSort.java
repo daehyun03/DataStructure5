@@ -1,4 +1,4 @@
-package daeHwan;
+package sort;
 
 public class NaturalMergeSort {
     private static void merge(Comparable[] arr, Comparable[] tempArr, int low, int mid, int high) {

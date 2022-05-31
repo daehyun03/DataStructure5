@@ -1,6 +1,4 @@
-package minJun;
-
-import java.lang.Comparable;
+package sort;
 
 public class InsertionSort {
     public static void sortLinear(Comparable[] a) {
