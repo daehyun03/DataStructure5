@@ -6,6 +6,17 @@ public class RecursiveMergeSort {
         mergeSort(arr, tempArr, 0, arr.length - 1);
     }
 
+    private static void mergeSort(Comparable[] arr, Comparable[] tempArr, int low, int high) {
+        if (low >= high) {
+            return;
+        }
+
+        int mid = (low + high) / 2;
+        mergeSort(arr, tempArr, low, mid);
+        mergeSort(arr, tempArr, mid + 1, high);
+        merge(arr, tempArr, low, mid, high);
+    }
+
     protected static void merge(Comparable[] arr, Comparable[] tempArr, int low, int mid, int high) {
         int idx1 = low;
         int idx2 = mid + 1;
@@ -28,16 +39,5 @@ public class RecursiveMergeSort {
         for (int i = low; i <= high; i++) {
             arr[i] = tempArr[i];
         }
-    }
-
-    private static void mergeSort(Comparable[] arr, Comparable[] tempArr, int low, int high) {
-        if (low >= high) {
-            return;
-        }
-
-        int mid = (low + high) / 2;
-        mergeSort(arr, tempArr, low, mid);
-        mergeSort(arr, tempArr, mid + 1, high);
-        merge(arr, tempArr, low, mid, high);
     }
 }
