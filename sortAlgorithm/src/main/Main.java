@@ -33,8 +33,8 @@ public class Main {
 
         clearFile();
 
-
-        int[] sizeArr = {1000, 2000, 3000, 4000, 5000};
+        tempRunAllSort();
+        int[] sizeArr = {10000, 20000, 30000, 40000, 50000};
 
         appendFile("Integer\n");
         for (int size : sizeArr) {
@@ -54,6 +54,28 @@ public class Main {
         appendFile("\n\nStudent\n");
         for (int size : sizeArr) {
             testAllState(state, sortName, RandomArrayCreator.studArr(size));
+        }
+    }
+
+    public static void tempRunAllSort() {
+        Comparable[] arr = RandomArrayCreator.intArr(10000);
+        try{
+            bubbleSortTest(arr.clone());
+            selectionSortTest(arr.clone());
+            linearInsertionSortTest(arr.clone());
+            binaryInsertionSortTest(arr.clone());
+            shellSortTest(arr.clone());
+            heapSortTest(arr.clone());
+            recursiveMergeSortTest(arr.clone());
+            iterativeMergeSortTest(arr.clone());
+            naturalMergeSortTest(arr.clone());
+            recursiveQuickSortTest(arr.clone());
+            medianOfThreeQuickSortTest(arr.clone());
+            arraysSort(arr.clone());
+            collectionsSort(Arrays.asList(arr.clone()));
+        }
+        catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -169,8 +191,6 @@ public class Main {
 
 
     public static double bubbleSortTest(Comparable[] arr) throws InterruptedException {
-        Thread.sleep(1000);
-
         long beforeTime = System.nanoTime();
         BubbleSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -179,8 +199,6 @@ public class Main {
     }
 
     public static double selectionSortTest(Comparable[] arr) throws InterruptedException {
-        Thread.sleep(1000);
-
         long beforeTime = System.nanoTime();
         SelectionSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -189,8 +207,6 @@ public class Main {
     }
 
     public static double linearInsertionSortTest(Comparable[] arr) throws InterruptedException {
-        Thread.sleep(1000);
-
         long beforeTime = System.nanoTime();
         LinearInsertionSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -199,8 +215,6 @@ public class Main {
     }
 
     public static double binaryInsertionSortTest(Comparable[] arr) throws InterruptedException {
-        Thread.sleep(1000);
-
         long beforeTime = System.nanoTime();
         BinaryInsertionSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -209,8 +223,6 @@ public class Main {
     }
 
     public static double shellSortTest(Comparable[] arr) throws InterruptedException {
-        Thread.sleep(1000);
-
         long beforeTime = System.nanoTime();
         ShellSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -219,8 +231,6 @@ public class Main {
     }
 
     public static double heapSortTest(Comparable[] arr) throws InterruptedException {
-        Thread.sleep(1000);
-
         long beforeTime = System.nanoTime();
         HeapSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -229,8 +239,6 @@ public class Main {
     }
 
     public static double recursiveMergeSortTest(Comparable[] arr) throws InterruptedException {
-        Thread.sleep(1000);
-
         long beforeTime = System.nanoTime();
         RecursiveMergeSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -239,8 +247,6 @@ public class Main {
     }
 
     public static double iterativeMergeSortTest(Comparable[] arr) throws InterruptedException {
-        Thread.sleep(1000);
-
         long beforeTime = System.nanoTime();
         IterativeMergeSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -249,8 +255,6 @@ public class Main {
     }
 
     public static double naturalMergeSortTest(Comparable[] arr) throws InterruptedException {
-        Thread.sleep(1000);
-
         long beforeTime = System.nanoTime();
         NaturalMergeSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -259,8 +263,6 @@ public class Main {
     }
 
     public static double recursiveQuickSortTest(Comparable[] arr) throws InterruptedException {
-        Thread.sleep(1000);
-
         long beforeTime = System.nanoTime();
         RecursiveQuickSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -269,8 +271,6 @@ public class Main {
     }
 
     public static double medianOfThreeQuickSortTest(Comparable[] arr) throws InterruptedException {
-        Thread.sleep(1000);
-
         long beforeTime = System.nanoTime();
         MedianOfThreeQuickSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -279,8 +279,6 @@ public class Main {
     }
 
     public static double arraysSort(Comparable[] arr) throws InterruptedException {
-        Thread.sleep(1000);
-
         long beforeTime = System.nanoTime();
         Arrays.sort(arr);
         long afterTime = System.nanoTime();
@@ -289,8 +287,6 @@ public class Main {
     }
 
     public static double collectionsSort(List arr) throws InterruptedException {
-        Thread.sleep(1000);
-
         long beforeTime = System.nanoTime();
         Collections.sort(arr);
         long afterTime = System.nanoTime();
