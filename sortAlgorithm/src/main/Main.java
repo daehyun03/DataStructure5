@@ -34,7 +34,7 @@ public class Main {
         clearFile();
 
 
-        int[] sizeArr = {10000, 20000, 30000, 40000, 50000};
+        int[] sizeArr = {1000, 2000, 3000, 4000, 5000};
 
         appendFile("Integer\n");
         for (int size : sizeArr) {
@@ -60,12 +60,12 @@ public class Main {
 
 
     public static void testAllState(String[] state, String[] sortName, Comparable[] arr) {
-        Comparable[] Arr = new Comparable[3];
-        int time = 5;
         StringBuilder[] result = new StringBuilder[sortName.length];
         for (int i = 0; i < result.length; i++) {
             result[i] = new StringBuilder();
         }
+
+        int time = 5;
 
         testAllSort(result, time, arr);
         Arrays.sort(arr);
@@ -74,26 +74,28 @@ public class Main {
         testAllSort(result, time, arr);
 
         appendFile(state, sortName, arr.length, result);
+
+        System.out.println("complete one cycle");
     }
 
     public static void testAllSort(StringBuilder[] result, int time, Comparable[] arr) {
-        Double[] sumRuntime = new Double[result.length];
+        double[] sumRuntime = new double[result.length];
 
         try {
             for (int i = 0; i < time; i++) {
-                sumRuntime[0] = bubbleSortTest(arr.clone());
-                sumRuntime[1] = selectionSortTest(arr.clone());
-                sumRuntime[2] = linearInsertionSortTest(arr.clone());
-                sumRuntime[3] = binaryInsertionSortTest(arr.clone());
-                sumRuntime[4] = shellSortTest(arr.clone());
-                sumRuntime[5] = heapSortTest(arr.clone());
-                sumRuntime[6] = recursiveMergeSortTest(arr.clone());
-                sumRuntime[7] = iterativeMergeSortTest(arr.clone());
-                sumRuntime[8] = naturalMergeSortTest(arr.clone());
-                sumRuntime[9] = recursiveQuickSortTest(arr.clone());
-                sumRuntime[10] = medianOfThreeQuickSortTest(arr.clone());
-                sumRuntime[11] = arraysSort(arr.clone());
-                sumRuntime[12] = collectionsSort(Arrays.asList(arr.clone()));
+                sumRuntime[0] += bubbleSortTest(arr.clone());
+                sumRuntime[1] += selectionSortTest(arr.clone());
+                sumRuntime[2] += linearInsertionSortTest(arr.clone());
+                sumRuntime[3] += binaryInsertionSortTest(arr.clone());
+                sumRuntime[4] += shellSortTest(arr.clone());
+                sumRuntime[5] += heapSortTest(arr.clone());
+                sumRuntime[6] += recursiveMergeSortTest(arr.clone());
+                sumRuntime[7] += iterativeMergeSortTest(arr.clone());
+                sumRuntime[8] += naturalMergeSortTest(arr.clone());
+                sumRuntime[9] += recursiveQuickSortTest(arr.clone());
+                sumRuntime[10] += medianOfThreeQuickSortTest(arr.clone());
+                sumRuntime[11] += arraysSort(arr.clone());
+                sumRuntime[12] += collectionsSort(Arrays.asList(arr.clone()));
             }
         }
         catch (Exception e) {

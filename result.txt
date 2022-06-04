@@ -1,0 +1,18 @@
+Integer
+size : 1000
+	Random	Increase	Decrease
+BubbleSort	4.338260	1.266360	1.694300	
+SelectionSort	5.714600	2.200780	2.286960	
+LinearInsertionSort	2.951040	0.020300	2.264640	
+BinaryInsertionSort	3.117740	0.051620	2.289460	
+ShellSort	2.035800	0.041200	0.903820	
+HeapSort	0.700940	0.262360	0.244060	
+RecursiveMergeSort	1.149540	0.302300	0.143380	
+IterativeMergeSort	0.913780	0.575320	0.218340	
+NaturalMergeSort	0.865780	0.176320	0.584000	
+RecursiveQuickSort	0.863040	0.105180	0.063980	
+MedianOfThreeQuickSort	0.994960	0.087160	0.113560	
+ArraysSort	1.021280	0.084360	0.415260	
+CollectionsSort	0.753720	0.082900	0.468920	
+
+
