@@ -8,6 +8,9 @@ public class BottomUpMergeSort {
             for ( int low = 0; low < high; low = low + size*2 ) {
                 merge(arr, tempArr, low, Math.min(low+size-1,high), Math.min(low+size*2-1,high));
             }
+            Comparable[] temp = arr;
+            arr = tempArr;
+            tempArr = temp;
         }
     }
 
@@ -30,8 +33,6 @@ public class BottomUpMergeSort {
             tempArr[tempIdx++] = arr[idx2++];
         }
 
-        for (int i = low; i <= high; i++) {
-            arr[i] = tempArr[i];
-        }
     }
+
 }
