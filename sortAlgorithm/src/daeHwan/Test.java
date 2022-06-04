@@ -1,9 +1,7 @@
 package daeHwan;
 
 import main.RandomArrayCreator;
-import sort.BottomUpMergeSort;
-import sort.NaturalMergeSort;
-import sort.RecursiveMergeSort;
+import sort.IterativeMergeSort;
 
 import java.util.Arrays;
 
@@ -15,7 +13,7 @@ public class Test {
         Integer[] arr1 = RandomArrayCreator.intArr(size);
         System.out.println(Arrays.toString(arr1));
 
-        BottomUpMergeSort.sort(arr1);
+        IterativeMergeSort.sort(arr1);
         System.out.println(Arrays.toString(arr1));
     }
 }

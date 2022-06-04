@@ -1,6 +1,6 @@
 package sort;
 
-public class BottomUpMergeSort {
+public class IterativeMergeSort {
     public static void sort(Comparable[] arr) {
         int arrSize = arr.length;
 
@@ -8,8 +8,8 @@ public class BottomUpMergeSort {
         Comparable[] to = new Comparable[arrSize];
 
         for (int size = 1; size < arrSize; size *= 2) {
-            for (int low = 0; low + size <= arrSize; low += size*2) {
-                merge(from, to, low, low + size, Math.min(low + 2 * size, arrSize));
+            for (int low = 0; low + size <= arrSize; low += size * 2) {
+                merge(from, to, low, low + size, Math.min(low + size * 2, arrSize));
             }
 
             Comparable[] temp = from;
