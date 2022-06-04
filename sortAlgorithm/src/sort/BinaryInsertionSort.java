@@ -1,19 +1,7 @@
 package sort;
 
-public class InsertionSort {
-    public static void sortLinear(Comparable[] a) {
-        int arrayLength = a.length;
-        for (int i = 1; i < arrayLength; i++) {
-            for (int j = i; j > 0; j--) {
-                if ( isLess( a[j], a[j-1]) ) {
-                    swap(a, j, j-1);
-                }
-                else break;
-            }
-        }
-    }
-
-    public static void sortBinary(Comparable[] arr) {
+public class BinaryInsertionSort {
+    public static void sort(Comparable[] arr) {
         int targetIdx;
         for (int i = 1; i < arr.length; i++) {
             targetIdx = binarySearch(arr, arr[i], i);

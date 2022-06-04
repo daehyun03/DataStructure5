@@ -40,7 +40,7 @@ public class Test {
 
     public static double test(Comparable[] arr) {
         long beforeTime = System.nanoTime();
-        BottomUpMergeSort.sort(arr);
+        IterativeMergeSort.sort(arr);
         long afterTime = System.nanoTime();
 
         return (double) (afterTime - beforeTime) / 1000000;
