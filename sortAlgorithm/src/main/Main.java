@@ -31,30 +31,11 @@ public class Main {
                 "CollectionsSort"
         };
 
-        clearFile();
-
-        tempRunAllSort();
         int[] sizeArr = {10000, 20000, 30000, 40000, 50000};
 
-        appendFile("Integer\n");
-        for (int size : sizeArr) {
-            testAllState(state, sortName, RandomArrayCreator.intArr(size));
-        }
-
-        appendFile("\n\nDouble\n");
-        for (int size : sizeArr) {
-            testAllState(state, sortName, RandomArrayCreator.doubleArr(size));
-        }
-
-        appendFile("\n\nString\n");
-        for (int size : sizeArr) {
-            testAllState(state, sortName, RandomArrayCreator.strArr(size));
-        }
-
-        appendFile("\n\nStudent\n");
-        for (int size : sizeArr) {
-            testAllState(state, sortName, RandomArrayCreator.studArr(size));
-        }
+        clearFile();
+        tempRunAllSort();
+        test(state, sortName, sizeArr);
     }
 
     public static void tempRunAllSort() {
@@ -80,22 +61,63 @@ public class Main {
     }
 
 
+    public static void test(String[] state, String[] sortName, int[] sizeArr) {
+        StringBuilder[][] result = new StringBuilder[state.length][sortName.length];
+        resetResult(result);
 
-    public static void testAllState(String[] state, String[] sortName, Comparable[] arr) {
-        StringBuilder[] result = new StringBuilder[sortName.length];
-        for (int i = 0; i < result.length; i++) {
-            result[i] = new StringBuilder();
+        appendFile("Integer\n");
+        for (int size : sizeArr) {
+            testAllState(result, state, sortName, RandomArrayCreator.intArr(size));
         }
+        printResult(state, sortName, sizeArr, result);
+        resetResult(result);
 
-        int time = 5;
+        appendFile("\n\nDouble\n");
+        for (int size : sizeArr) {
+            testAllState(result, state, sortName, RandomArrayCreator.doubleArr(size));
+        }
+        printResult(state, sortName, sizeArr, result);
+        resetResult(result);
 
-        testAllSort(result, time, arr);
+        appendFile("\n\nString\n");
+        for (int size : sizeArr) {
+            testAllState(result, state, sortName, RandomArrayCreator.strArr(size));
+        }
+        printResult(state, sortName, sizeArr, result);
+        resetResult(result);
+
+        appendFile("\n\nStudent\n");
+        for (int size : sizeArr) {
+            testAllState(result, state, sortName, RandomArrayCreator.studArr(size));
+        }
+        printResult(state, sortName, sizeArr, result);
+    }
+
+    public static void resetResult(StringBuilder[][] sb) {
+        for (int i = 0; i < sb.length; i++) {
+            for (int j = 0; j < sb[0].length; j++) {
+                sb[i][j] = new StringBuilder();
+            }
+        }
+    }
+
+    public static void printResult(String[] state, String[] sortName, int[] sizeArr, StringBuilder[][] result) {
+        for (int i = 0; i < result.length; i++) {
+            appendFile(state[i] + "\n");
+            appendFile(sortName, sizeArr, result[i]);
+        }
+    }
+
+
+
+    public static void testAllState(StringBuilder[][] result, String[] state, String[] sortName, Comparable[] arr) {
+        int time = 10;
+
+        testAllSort(result[0], time, arr);
         Arrays.sort(arr);
-        testAllSort(result, time, arr);
+        testAllSort(result[1], time, arr);
         Arrays.sort(arr, Comparator.reverseOrder());
-        testAllSort(result, time, arr);
-
-        appendFile(state, sortName, arr.length, result);
+        testAllSort(result[2], time, arr);
 
         System.out.println("complete one cycle");
     }
@@ -161,7 +183,7 @@ public class Main {
         }
     }
 
-    public static void appendFile(String[] state, String[] sortName, int size, StringBuilder[] result) {
+    public static void appendFile(String[] sortName, int[] sizeArr, StringBuilder[] result) {
         String filePath = "result.txt";
         File file = new File(filePath);
 
@@ -169,9 +191,9 @@ public class Main {
             FileWriter fw = new FileWriter(file, true);
             BufferedWriter bos = new BufferedWriter(fw);
 
-            bos.write("size : "+ size +"\n");
-            for (int i = 0; i < state.length; i++) {
-                bos.write("\t" + state[i]);
+            bos.write("size : ");
+            for (int i = 0; i < sizeArr.length; i++) {
+                bos.write("\t" + sizeArr[i]);
             }
             bos.write("\n");
 
