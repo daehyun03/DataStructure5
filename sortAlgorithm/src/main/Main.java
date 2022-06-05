@@ -31,7 +31,7 @@ public class Main {
                 "CollectionsSort"
         };
 
-        int[] sizeArr = {1000, 2000, 3000, 4000, 5000};
+        int[] sizeArr = {10000, 20000, 30000, 40000, 50000};
 
         clearFile();
         tempRunAllSort();
@@ -111,7 +111,7 @@ public class Main {
 
 
     public static void testAllState(StringBuilder[][] result, Comparable[] arr) {
-        int time = 10;
+        int time = 5;
 
         testAllSort(result[0], time, arr);
         Arrays.sort(arr);
@@ -213,6 +213,7 @@ public class Main {
 
 
     public static double bubbleSortTest(Comparable[] arr) {
+        BubbleSort.sort(RandomArrayCreator.intArr(10000));
         long beforeTime = System.nanoTime();
         BubbleSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -221,6 +222,7 @@ public class Main {
     }
 
     public static double selectionSortTest(Comparable[] arr) {
+        SelectionSort.sort(RandomArrayCreator.intArr(10000));
         long beforeTime = System.nanoTime();
         SelectionSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -229,6 +231,7 @@ public class Main {
     }
 
     public static double linearInsertionSortTest(Comparable[] arr) {
+        LinearInsertionSort.sort(RandomArrayCreator.intArr(10000));
         long beforeTime = System.nanoTime();
         LinearInsertionSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -237,6 +240,7 @@ public class Main {
     }
 
     public static double binaryInsertionSortTest(Comparable[] arr) {
+        BinaryInsertionSort.sort(RandomArrayCreator.intArr(10000));
         long beforeTime = System.nanoTime();
         BinaryInsertionSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -245,6 +249,7 @@ public class Main {
     }
 
     public static double shellSortTest(Comparable[] arr) {
+        ShellSort.sort(RandomArrayCreator.intArr(10000));
         long beforeTime = System.nanoTime();
         ShellSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -253,6 +258,7 @@ public class Main {
     }
 
     public static double heapSortTest(Comparable[] arr) {
+        HeapSort.sort(RandomArrayCreator.intArr(10000));
         long beforeTime = System.nanoTime();
         HeapSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -261,6 +267,7 @@ public class Main {
     }
 
     public static double recursiveMergeSortTest(Comparable[] arr) {
+        RecursiveMergeSort.sort(RandomArrayCreator.intArr(100000));
         long beforeTime = System.nanoTime();
         RecursiveMergeSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -269,6 +276,7 @@ public class Main {
     }
 
     public static double iterativeMergeSortTest(Comparable[] arr) {
+        IterativeMergeSort.sort(RandomArrayCreator.intArr(100000));
         long beforeTime = System.nanoTime();
         IterativeMergeSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -277,6 +285,7 @@ public class Main {
     }
 
     public static double naturalMergeSortTest(Comparable[] arr) {
+        NaturalMergeSort.sort(RandomArrayCreator.intArr(100000));
         long beforeTime = System.nanoTime();
         NaturalMergeSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -285,6 +294,7 @@ public class Main {
     }
 
     public static double recursiveQuickSortTest(Comparable[] arr) {
+        RecursiveQuickSort.sort(RandomArrayCreator.intArr(100000));
         long beforeTime = System.nanoTime();
         RecursiveQuickSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -293,6 +303,7 @@ public class Main {
     }
 
     public static double medianOfThreeQuickSortTest(Comparable[] arr) {
+        MedianOfThreeQuickSort.sort(RandomArrayCreator.intArr(100000));
         long beforeTime = System.nanoTime();
         MedianOfThreeQuickSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -301,6 +312,7 @@ public class Main {
     }
 
     public static double arraysSort(Comparable[] arr) {
+        Arrays.sort(RandomArrayCreator.intArr(100000));
         long beforeTime = System.nanoTime();
         Arrays.sort(arr);
         long afterTime = System.nanoTime();
@@ -309,6 +321,7 @@ public class Main {
     }
 
     public static double collectionsSort(List arr) {
+        Collections.sort(arr);
         long beforeTime = System.nanoTime();
         Collections.sort(arr);
         long afterTime = System.nanoTime();
