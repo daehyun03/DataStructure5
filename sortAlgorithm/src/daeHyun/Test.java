@@ -10,15 +10,14 @@ public class Test {
     public static void main(String[] args) {
         System.out.println("arr len         R             up            down");
 
-        int[] sizeArr = {10};
+        int[] sizeArr = {10000, 20000, 30000, 40000, 50000};
 
         double[] avgTime1 = new double[sizeArr.length];
         double[] avgTime2 = new double[sizeArr.length];
         double[] avgTime3 = new double[sizeArr.length];
 
-
-        test(RandomArrayCreator.intArr(10));
-        for ( int j = 0; j < 1; j++) {
+        test(RandomArrayCreator.intArr(1000000));
+        for ( int j = 0; j < 10; j++) {
             for ( int i = 0; i < sizeArr.length; i++ ) {
                 Integer[] arr = RandomArrayCreator.intArr(sizeArr[i]);
                 double time1 = test(arr);
@@ -33,14 +32,26 @@ public class Test {
             System.out.println();
         }
 
-        for ( int i = 0; i < sizeArr.length; i++ ) {
-            System.out.printf("%8d time : %f\t%f\t%f\n", sizeArr[i], avgTime1[i]/10, avgTime2[i]/10, avgTime3[i]/10);
+        for ( int size : sizeArr ) {
+            System.out.print(size + "\t");
+        }
+        System.out.println();
+        for ( double dou : avgTime1 ) {
+            System.out.print(dou/10 + "\t");
+        }
+        System.out.println();
+        for ( double dou : avgTime2 ) {
+            System.out.print(dou/10 + "\t");
+        }
+        System.out.println();
+        for ( double dou : avgTime3 ) {
+            System.out.print(dou/10 + "\t");
         }
     }
 
     public static double test(Comparable[] arr) {
         long beforeTime = System.nanoTime();
-        IterativeMergeSort.sort(arr);
+        NaturalMergeSort.sort(arr);
         long afterTime = System.nanoTime();
 
         return (double) (afterTime - beforeTime) / 1000000;
@@ -53,4 +64,7 @@ public class Test {
         }
         return true;
     }
+    /*
+        arraysSort(arr.clone());
+        collectionsSort(Arrays.asList(arr.clone()));*/
 }
