@@ -31,30 +31,11 @@ public class Main {
                 "CollectionsSort"
         };
 
+        int[] sizeArr = {1000, 2000, 3000, 4000, 5000};
+
         clearFile();
-
         tempRunAllSort();
-        int[] sizeArr = {10000, 20000, 30000, 40000, 50000};
-
-        appendFile("Integer\n");
-        for (int size : sizeArr) {
-            testAllState(state, sortName, RandomArrayCreator.intArr(size));
-        }
-
-        appendFile("\n\nDouble\n");
-        for (int size : sizeArr) {
-            testAllState(state, sortName, RandomArrayCreator.doubleArr(size));
-        }
-
-        appendFile("\n\nString\n");
-        for (int size : sizeArr) {
-            testAllState(state, sortName, RandomArrayCreator.strArr(size));
-        }
-
-        appendFile("\n\nStudent\n");
-        for (int size : sizeArr) {
-            testAllState(state, sortName, RandomArrayCreator.studArr(size));
-        }
+        test(state, sortName, sizeArr);
     }
 
     public static void tempRunAllSort() {
@@ -80,22 +61,63 @@ public class Main {
     }
 
 
+    public static void test(String[] state, String[] sortName, int[] sizeArr) {
+        StringBuilder[][] result = new StringBuilder[state.length][sortName.length];
+        resetResult(result);
 
-    public static void testAllState(String[] state, String[] sortName, Comparable[] arr) {
-        StringBuilder[] result = new StringBuilder[sortName.length];
-        for (int i = 0; i < result.length; i++) {
-            result[i] = new StringBuilder();
+        appendFile("Integer\n");
+        for (int size : sizeArr) {
+            testAllState(result, RandomArrayCreator.intArr(size));
         }
+        printResult(state, sortName, sizeArr, result);
+        resetResult(result);
 
-        int time = 5;
+        appendFile("\n\nDouble\n");
+        for (int size : sizeArr) {
+            testAllState(result, RandomArrayCreator.doubleArr(size));
+        }
+        printResult(state, sortName, sizeArr, result);
+        resetResult(result);
 
-        testAllSort(result, time, arr);
+        appendFile("\n\nString\n");
+        for (int size : sizeArr) {
+            testAllState(result, RandomArrayCreator.strArr(size));
+        }
+        printResult(state, sortName, sizeArr, result);
+        resetResult(result);
+
+        appendFile("\n\nStudent\n");
+        for (int size : sizeArr) {
+            testAllState(result, RandomArrayCreator.studArr(size));
+        }
+        printResult(state, sortName, sizeArr, result);
+    }
+
+    public static void resetResult(StringBuilder[][] sb) {
+        for (int i = 0; i < sb.length; i++) {
+            for (int j = 0; j < sb[0].length; j++) {
+                sb[i][j] = new StringBuilder();
+            }
+        }
+    }
+
+    public static void printResult(String[] state, String[] sortName, int[] sizeArr, StringBuilder[][] result) {
+        for (int i = 0; i < result.length; i++) {
+            appendFile(state[i] + "\n");
+            appendFile(sortName, sizeArr, result[i]);
+        }
+    }
+
+
+
+    public static void testAllState(StringBuilder[][] result, Comparable[] arr) {
+        int time = 10;
+
+        testAllSort(result[0], time, arr);
         Arrays.sort(arr);
-        testAllSort(result, time, arr);
+        testAllSort(result[1], time, arr);
         Arrays.sort(arr, Comparator.reverseOrder());
-        testAllSort(result, time, arr);
-
-        appendFile(state, sortName, arr.length, result);
+        testAllSort(result[2], time, arr);
 
         System.out.println("complete one cycle");
     }
@@ -161,7 +183,7 @@ public class Main {
         }
     }
 
-    public static void appendFile(String[] state, String[] sortName, int size, StringBuilder[] result) {
+    public static void appendFile(String[] sortName, int[] sizeArr, StringBuilder[] result) {
         String filePath = "result.txt";
         File file = new File(filePath);
 
@@ -169,9 +191,9 @@ public class Main {
             FileWriter fw = new FileWriter(file, true);
             BufferedWriter bos = new BufferedWriter(fw);
 
-            bos.write("size : "+ size +"\n");
-            for (int i = 0; i < state.length; i++) {
-                bos.write("\t" + state[i]);
+            bos.write("size : ");
+            for (int i = 0; i < sizeArr.length; i++) {
+                bos.write("\t" + sizeArr[i]);
             }
             bos.write("\n");
 
@@ -190,7 +212,7 @@ public class Main {
 
 
 
-    public static double bubbleSortTest(Comparable[] arr) throws InterruptedException {
+    public static double bubbleSortTest(Comparable[] arr) {
         long beforeTime = System.nanoTime();
         BubbleSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -198,7 +220,7 @@ public class Main {
         return (double) (afterTime - beforeTime) / 1000000;
     }
 
-    public static double selectionSortTest(Comparable[] arr) throws InterruptedException {
+    public static double selectionSortTest(Comparable[] arr) {
         long beforeTime = System.nanoTime();
         SelectionSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -206,7 +228,7 @@ public class Main {
         return (double) (afterTime - beforeTime) / 1000000;
     }
 
-    public static double linearInsertionSortTest(Comparable[] arr) throws InterruptedException {
+    public static double linearInsertionSortTest(Comparable[] arr) {
         long beforeTime = System.nanoTime();
         LinearInsertionSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -214,7 +236,7 @@ public class Main {
         return (double) (afterTime - beforeTime) / 1000000;
     }
 
-    public static double binaryInsertionSortTest(Comparable[] arr) throws InterruptedException {
+    public static double binaryInsertionSortTest(Comparable[] arr) {
         long beforeTime = System.nanoTime();
         BinaryInsertionSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -222,7 +244,7 @@ public class Main {
         return (double) (afterTime - beforeTime) / 1000000;
     }
 
-    public static double shellSortTest(Comparable[] arr) throws InterruptedException {
+    public static double shellSortTest(Comparable[] arr) {
         long beforeTime = System.nanoTime();
         ShellSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -230,7 +252,7 @@ public class Main {
         return (double) (afterTime - beforeTime) / 1000000;
     }
 
-    public static double heapSortTest(Comparable[] arr) throws InterruptedException {
+    public static double heapSortTest(Comparable[] arr) {
         long beforeTime = System.nanoTime();
         HeapSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -238,7 +260,7 @@ public class Main {
         return (double) (afterTime - beforeTime) / 1000000;
     }
 
-    public static double recursiveMergeSortTest(Comparable[] arr) throws InterruptedException {
+    public static double recursiveMergeSortTest(Comparable[] arr) {
         long beforeTime = System.nanoTime();
         RecursiveMergeSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -246,7 +268,7 @@ public class Main {
         return (double) (afterTime - beforeTime) / 1000000;
     }
 
-    public static double iterativeMergeSortTest(Comparable[] arr) throws InterruptedException {
+    public static double iterativeMergeSortTest(Comparable[] arr) {
         long beforeTime = System.nanoTime();
         IterativeMergeSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -254,7 +276,7 @@ public class Main {
         return (double) (afterTime - beforeTime) / 1000000;
     }
 
-    public static double naturalMergeSortTest(Comparable[] arr) throws InterruptedException {
+    public static double naturalMergeSortTest(Comparable[] arr) {
         long beforeTime = System.nanoTime();
         NaturalMergeSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -262,7 +284,7 @@ public class Main {
         return (double) (afterTime - beforeTime) / 1000000;
     }
 
-    public static double recursiveQuickSortTest(Comparable[] arr) throws InterruptedException {
+    public static double recursiveQuickSortTest(Comparable[] arr) {
         long beforeTime = System.nanoTime();
         RecursiveQuickSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -270,7 +292,7 @@ public class Main {
         return (double) (afterTime - beforeTime) / 1000000;
     }
 
-    public static double medianOfThreeQuickSortTest(Comparable[] arr) throws InterruptedException {
+    public static double medianOfThreeQuickSortTest(Comparable[] arr) {
         long beforeTime = System.nanoTime();
         MedianOfThreeQuickSort.sort(arr);
         long afterTime = System.nanoTime();
@@ -278,7 +300,7 @@ public class Main {
         return (double) (afterTime - beforeTime) / 1000000;
     }
 
-    public static double arraysSort(Comparable[] arr) throws InterruptedException {
+    public static double arraysSort(Comparable[] arr) {
         long beforeTime = System.nanoTime();
         Arrays.sort(arr);
         long afterTime = System.nanoTime();
@@ -286,7 +308,7 @@ public class Main {
         return (double) (afterTime - beforeTime) / 1000000;
     }
 
-    public static double collectionsSort(List arr) throws InterruptedException {
+    public static double collectionsSort(List arr) {
         long beforeTime = System.nanoTime();
         Collections.sort(arr);
         long afterTime = System.nanoTime();
